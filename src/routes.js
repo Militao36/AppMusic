@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { searchForMusic } from "./musics/index.js";
+import { searchForMusic, searchForTrack } from "./musics/index.js";
 import { stremmingAudio } from "./stream/index.js";
 
 const router = Router()
@@ -24,10 +24,19 @@ router.get('/:trackId', async (req, res, next) => {
         });
 
         res.status(206);
-        
+
         return stream.pipe(res)
     } catch (error) {
         next(error)
+    }
+})
+
+router.get('/track/list', (req, res, next) => {
+    try {
+        const tracks = searchForTrack()
+        return res.status(200).json(tracks)
+    } catch (error) {
+
     }
 })
 

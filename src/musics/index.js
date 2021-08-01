@@ -17,3 +17,5 @@ export const searchForMusic = (trackId = '') => {
 
     return track[0]
 }
+
+export const searchForTrack = () => tracks
