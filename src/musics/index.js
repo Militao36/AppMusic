@@ -8,7 +8,10 @@ const tracks = [
     }
 ]
 
-export const searchForMusic = (trackId = '') => {
+export function searchForMusic(trackId) {
+    if (trackId) {
+        return null
+    }
     const track = tracks
         .filter(value => value.trackId === trackId)
 
@@ -18,4 +21,6 @@ export const searchForMusic = (trackId = '') => {
     return track[0]
 }
 
-export const searchForTrack = () => tracks
+export function searchForTrack() {
+    return tracks
+}
